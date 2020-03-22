@@ -1,0 +1,10 @@
+canvas{
+  border:5px solid #d3d3d3;
+	background-color: #f1f1f1;
+  padding-top: 150px;
+	display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  height: 75%;
+}
