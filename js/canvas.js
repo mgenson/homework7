@@ -1,6 +1,6 @@
 // Variables!
 var color ="red";
-var radius = 15;
+var radius = 10;
 var canvas = document.querySelector("canvas");
 var ctx = canvas.getContext("2d");
 var x = 100;
@@ -15,12 +15,13 @@ canvas.addEventListener('mousemove', function(e) {
   console.log(x);
   y = e.y;
   console.log(y);
-  circle(e.pageX - radius, e.pageY - radius);
+  draw(e.pageX - radius, e.pageY - radius);
 })
-canvas.addEventListener('onkeydown', function(e){
+canvas.addEventListener('keydown', function(e){
   console.log(e);
   if (e.keyCode == 66);
     ctx.fillStyle = "#0000ff";
+    console.log("changed to blue")
 })
 //Add a listener for loading the window
 //Add a listener for the mouse movement
@@ -30,7 +31,7 @@ canvas.addEventListener('onkeydown', function(e){
 
 // Functions!
 // I would add a function for draw
-function circle(){
+function draw(){
   console.log("I am going to draw a circle");
   ctx.beginPath();
   ctx.fillStyle = color;
