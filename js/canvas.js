@@ -17,11 +17,21 @@ canvas.addEventListener('mousemove', function(e) {
   console.log(y);
   draw(e.pageX - radius, e.pageY - radius);
 })
-canvas.addEventListener('keydown', function(e){
-  console.log(e);
+draw();
+window.addEventListener('keydown', function(e){
+  console.log(e.keyCode);
   if (e.keyCode == 66);
-    ctx.fillStyle = "#0000ff";
-    console.log("changed to blue")
+    ctx.fillStyle = "rgb(0, 0, 255)";
+    console.log("changed to blue");
+  if (e.keyCode == 71);
+    ctx.fillStyle = "rgb(0, 255, 0)";
+    console.log("chaged to green");
+  if(e.keyCode == 89);
+    ctx.fillStyle = "rgb(255, 255, 0)";
+    console.log("changed to yellow");
+  if(e.keyCode ==82);
+    ctx.fillStyle = "rgb(255, 0, 0)";
+    console.log("changed to red");
 })
 //Add a listener for loading the window
 //Add a listener for the mouse movement
