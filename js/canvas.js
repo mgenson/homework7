@@ -5,9 +5,11 @@ var canvas = document.querySelector("canvas");
 var ctx = canvas.getContext("2d");
 var x = 100;
 var y = 75;
+var colorWell;
 // var width = 0.75;
 // var height = 0.75;
 //You will want to add more
+//When true, moving the mouse draws on the Canvas
 
 //Listeners!!
 // Mouse move listener
@@ -45,34 +47,64 @@ window.addEventListener('keydown', function(e){
     console.log("changed to red");
     color = "rgb(255, 0, 0)";
     ctx.fillStyle = color;
-
   }
-
   else if (e.keyCode == 32){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     console.log("cleared canvas");
-  }
-  else if (e.keyCode ==38){
-    ctx.fillStyle = transparent;
-
-    console.log("up");
-  }
-
-
+   }
+   // else if (e.keyCode == 38){
+   //   stopDraw();
+   // }
 })
-window.addEventListener('mouseup', function(e){
-  if (e.keyCode == 38){
-    ctx.fillStyle = none;
-  }
-})
+window.addEventListener('load', startup, false);
+function startup(){
+  colorWell = document.querySelector('clr');
+  colorWell.value = color;
+  colorWell.addEventListener('input', updateFirst, false);
+  colorWell.addEventListener('change', updateAll, false);
+  colorWell.select();
+}
+
+
+
+function updateFirst(e){
+  var clr = document.querySelector("clr");
+    if (clr){
+      clr.style.color = e.taget.value;
+    }
+}
+function updateAll(e){
+  document.querySelectorAll("clr").forEach(function(clr){
+    clr.style.color = e.target.value;
+  });
+}
+
+
+
+  // else if (e.keyCode == 32){
+  //   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  //   console.log("cleared canvas");
+  // }
+
+
+
+
+// window.addEventListener('keydown', function(e){
+//   if (e.keyCode == 38){
+//     mouseDown = false;
+//   }
+// })
 
 // Color picker listener
-clr.addEventListener("input", function(e){
-  console.log("color Picker");
-  console.log(this);
-  console.log(e);
-
-})
+// clr.addEventListener("input", function(e){
+//   console.log("color Picker");
+//   console.log(this);
+//   console.log(e);
+//
+// })
+//
+//
+// }
 //Add a listener for loading the window
 //Add a listener for the mouse movement
 //Add a listener for the touch move
@@ -86,5 +118,12 @@ function draw(posX, posY){
   ctx.beginPath();
   ctx.fillStyle= color;
   ctx.arc(posX, posY, radius, 0, 2 * Math.PI);
+  ctx.fill();
+}
+function stopDraw(posX = 0, posY = 0){
+  console.log("I am not going to draw");
+  ctx.beginPath();
+  ctx.fillStyle = Color;
+  ctx.arc(0, 0, 0, 0, 2 * Math.PI);
   ctx.fill();
 }
