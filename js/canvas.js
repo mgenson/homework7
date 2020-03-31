@@ -56,28 +56,37 @@ window.addEventListener('keydown', function(e){
    //   stopDraw();
    // }
 })
-window.addEventListener('load', startup, false);
-function startup(){
-  colorWell = document.querySelector('clr');
-  colorWell.value = color;
-  colorWell.addEventListener('input', updateFirst, false);
-  colorWell.addEventListener('change', updateAll, false);
-  colorWell.select();
-}
-
-
-
-function updateFirst(e){
-  var clr = document.querySelector("clr");
-    if (clr){
-      clr.style.color = e.taget.value;
-    }
-}
-function updateAll(e){
-  document.querySelectorAll("clr").forEach(function(clr){
-    clr.style.color = e.target.value;
-  });
-}
+window.addEventListener("input", function(e){
+  colorPicker = document.getElementById("clr");
+  if (colorPicker == true){
+    colorPicker.value = color;
+    colorPicker.addEventListener("input", true);
+    colorPicker.select();
+    colorPicker.style.color = e.target.value;
+  }
+})
+// window.addEventListener('load', startup, false);
+// function startup(){
+//   colorWell = document.querySelector('clr');
+//   colorWell.value = color;
+//   colorWell.addEventListener('input', updateFirst, false);
+//   colorWell.addEventListener('change', updateAll, false);
+//   colorWell.select();
+// }
+//
+//
+//
+// function updateFirst(e){
+//   var clr = document.querySelector("clr");
+//     if (clr){
+//       clr.style.color = e.taget.value;
+//     }
+// }
+// function updateAll(e){
+//   document.querySelectorAll("clr").forEach(function(clr){
+//     clr.style.color = e.target.value;
+//   });
+// }
 
 
 
