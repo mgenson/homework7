@@ -5,7 +5,7 @@ var canvas = document.querySelector("canvas");
 var ctx = canvas.getContext("2d");
 var x = 100;
 var y = 75;
-var penUp = true;
+var penUp = false;
 canvas.width = window.innerWidth *.75;
 canvas.height = window.innerHeight *.75;
 // var width = 0.75;
@@ -84,10 +84,16 @@ window.addEventListener("load", function(e){
 //Add a listener for the mouse movement
 //Add a listener for the touch move
 window.addEventListener("touchmove", function(e){
-  x = e.touches[0].pageX;
-  y = e.touches[0].pageY;
   draw();
-})
+  var touch = e.touches[0];
+  var mouseEvent = new MouseEvent("mousemove",{
+    clientX: touch.clientX,
+    clientY: touch.cientY
+  });
+  canvas.dispatchEvent(mouseEvent);
+  console.log("i am drawing");
+  // draw();
+}, false)
 //Add a listener for the keydown
 
 
@@ -100,8 +106,5 @@ function draw(posX, posY){
     ctx.fillStyle = color;
     ctx.arc(posX, posY, radius, 0, 2*Math.PI);
     ctx.fill();
-  }
-  else{
-    penUp == true;
   }
 }
