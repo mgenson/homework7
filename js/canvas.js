@@ -17,9 +17,9 @@ canvas.height = window.innerHeight *.75;
 // Mouse move listener
 canvas.addEventListener('mousemove', function(e) {
   x = e.x;
-  console.log(x);
+  // console.log(x);
   y = e.y;
-  console.log(y);
+  // console.log(y);
   draw(e.pageX - radius, e.pageY - radius);
 })
 // Change color with keydown
@@ -95,13 +95,13 @@ window.addEventListener("touchmove", function(e){
 // I would add a function for draw
 
 function draw(posX, posY){
-  if penUp = false;{
+  if (penUp == false){
     ctx.beginPath();
     ctx.fillStyle = color;
     ctx.arc(posX, posY, radius, 0, 2*Math.PI);
     ctx.fill();
   }
   else{
-    penUp = true;
+    penUp == true;
   }
 }
