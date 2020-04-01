@@ -1,11 +1,10 @@
 // Variables!
 var color ="red";
-var radius = 10;
+var radius = 15;
 var canvas = document.querySelector("canvas");
 var ctx = canvas.getContext("2d");
 var x = 100;
 var y = 75;
-var penUp = false;
 console.log(window.innerWidth);
 console.log(canvas.width);
 canvas.width = window.innerWidth *.75;
@@ -30,39 +29,38 @@ draw();
 window.addEventListener('keydown', function(e){
   console.log(e.keyCode);
   if (e.keyCode == 66){
-    penUp = false;
+    console.log(penUp);
     color = "rgb(0, 0, 255)";
     console.log("changed to blue");
   }
   else if (e.keyCode == 71){
-    penUp = false;
     color = "rgb(0, 255, 0)";
     console.log("chaged to green");
   }
 
   else if(e.keyCode == 89){
-    penUp = false;
     console.log("changed to yellow");
     color = "rgb(255, 255, 0)";
 
   }
 
   else if(e.keyCode == 82){
-    penUp = false;
+    console.log(penUp);
     console.log("changed to red");
     color = "rgb(255, 0, 0)";
   }
   else if (e.keyCode == 32){
-    penUp = false;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     console.log("cleared canvas");
    }
    else if (e.keyCode == 38){
-     penUp = true;
-     console.log(penUp);
+     radius += 1;
    }
    else if (e.keyCode == 40){
-     penUp = false;
+     if (radius >1){
+       radius -= 1;
+     }
+
    }
    //   stopDraw();
    // }
@@ -78,26 +76,26 @@ clr.addEventListener("input", function(e){
 //
 // }
 //Add a listener for loading the window
-// window.addEventListener("load", function(e){
-//
-// })
+window.addEventListener("load", function(e){
+  console.log('page is loaded');
+
+})
 //Add a listener for the mouse movement
 //Add a listener for the touch move
+window.addEventListener("touchmove", function(e){
+  x = e.touches[0].pageX;
+  y = e.touches[0].pageY;
+  draw();
+})
 //Add a listener for the keydown
 
 
 // Functions!
 // I would add a function for draw
 function draw(posX, posY){
-  if (penUp = false){
-    ctx.beginPath();
-    ctx.fillStyle= color;
-    ctx.arc(posX, posY, radius, 0, 2 * Math.PI);
-    ctx.fill();
-  }
-  else {
-    penUp = true;
-    ctx.closePath();
-  }
+  ctx.beginPath();
+  ctx.fillStyle= color;
+  ctx.arc(posX, posY, radius, 0, 2 * Math.PI);
+  ctx.fill();
 
-}
+  }
