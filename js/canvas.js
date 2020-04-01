@@ -83,17 +83,29 @@ window.addEventListener("load", function(e){
 })
 //Add a listener for the mouse movement
 //Add a listener for the touch move
-window.addEventListener("touchmove", function(e){
-  draw();
-  var touch = e.touches[0];
-  var mouseEvent = new MouseEvent("mousemove",{
-    clientX: touch.clientX,
-    clientY: touch.cientY
-  });
-  canvas.dispatchEvent(mouseEvent);
-  console.log("i am drawing");
-  // draw();
-}, false)
+// window.addEventListener("touchmove", function(e){
+//   draw();
+//   var touch = e.touches[0];
+//   var mouseEvent = new MouseEvent("mousemove",{
+//     clientX: touch.clientX,
+//     clientY: touch.cientY
+//   });
+//   canvas.dispatchEvent(mouseEvent);
+//   console.log("i am drawing");
+//   // draw();
+// }, false)
+window.addEventListener('touchmove', function(e){
+  var touch = e.touches[0]
+  x = touch.pageX;
+  y = touch.pageY;
+  console.log("I am drawing")
+  draw(e.pageX - radius, e.pageY - radius)
+})
+// window.addEventListener('mousemove', function(e){
+//   x = e.pageX;
+//   y = e.pageY;
+//   draw();
+// })
 //Add a listener for the keydown
 
 
