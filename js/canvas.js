@@ -5,8 +5,7 @@ var canvas = document.querySelector("canvas");
 var ctx = canvas.getContext("2d");
 var x = 100;
 var y = 75;
-console.log(window.innerWidth);
-console.log(canvas.width);
+var penUp = true;
 canvas.width = window.innerWidth *.75;
 canvas.height = window.innerHeight *.75;
 // var width = 0.75;
@@ -54,12 +53,14 @@ window.addEventListener('keydown', function(e){
     console.log("cleared canvas");
    }
    else if (e.keyCode == 38){
-     radius += 1;
+     penUp = true;
+     // radius -= 15;
    }
    else if (e.keyCode == 40){
-     if (radius >1){
-       radius -= 1;
-     }
+     penUp = false;
+     // if (radius <15){
+     //   radius += 15;
+     // }
 
    }
    //   stopDraw();
@@ -92,10 +93,15 @@ window.addEventListener("touchmove", function(e){
 
 // Functions!
 // I would add a function for draw
-function draw(posX, posY){
-  ctx.beginPath();
-  ctx.fillStyle= color;
-  ctx.arc(posX, posY, radius, 0, 2 * Math.PI);
-  ctx.fill();
 
+function draw(posX, posY){
+  if penUp = false;{
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.arc(posX, posY, radius, 0, 2*Math.PI);
+    ctx.fill();
   }
+  else{
+    penUp = true;
+  }
+}
